@@ -4,6 +4,10 @@ import Header from "./(components)/header/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import FixedArrow from "./(components)/fixed-arrow/FixedArrow";
 import Footer from "./(components)/footer/Footer";
+import CartButtonProvider from "@/context/CartButtonContext";
+import Overlay from "./(components)/overlay/Overlay";
+import Cart from "./(components)/cart/Cart";
+import { ReduxProvider } from "@/rtk/store";
 
 const mrDeHaviland = Mr_De_Haviland({
   variable: "--font-cursive",
@@ -27,10 +31,16 @@ export default function RootLayout({ children }) {
         <body
           className={`${josefin.className} ${mrDeHaviland.className} antialiased`}
         >
-          <Header />
-          <FixedArrow />
-          {children}
-          <Footer />
+          <ReduxProvider>
+            <CartButtonProvider>
+              <Cart />
+              <Overlay />
+              <Header />
+              <FixedArrow />
+              {children}
+              <Footer />
+            </CartButtonProvider>
+          </ReduxProvider>
         </body>
       </html>
     </ClerkProvider>
