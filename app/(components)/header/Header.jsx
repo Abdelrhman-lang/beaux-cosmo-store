@@ -11,7 +11,7 @@ export default function Header() {
 
   useEffect(() => {
     const handelScroll = () => {
-      if (scrollY > 100) {
+      if (scrollY > 50) {
         setBg(true);
       } else {
         setBg(false);

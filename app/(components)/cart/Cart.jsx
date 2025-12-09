@@ -12,6 +12,8 @@ import { Trash2, X } from "lucide-react";
 import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SecondryBtn from "../sec-btn/SecondryBtn";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Cart() {
   const { items, loading, totalPrice } = useSelector((state) => state.cart);
@@ -42,7 +44,7 @@ export default function Cart() {
       </button>
       {loading ? (
         <div className="flex items-center justify-center h-full">
-          <Spinner />
+          <Spinner className={"w-10 h-10"} />
         </div>
       ) : items.length === 0 ? (
         <div className="flex items-center justify-center h-full">
@@ -139,7 +141,14 @@ export default function Cart() {
             </div>
           </div>
           <div className="mt-5">
-            <SecondryBtn title={"VIEW CART"} className={"w-full"} />
+            <Link
+              href={"/cart"}
+              className={`${buttonVariants({
+                variant: "secondary",
+              })} w-full`}
+            >
+              VIEW CART
+            </Link>
           </div>
         </main>
       )}
