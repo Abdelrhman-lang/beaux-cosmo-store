@@ -32,7 +32,7 @@ export default function Cart() {
   const { isCartOpen, setIsCartOpen } = useContext(CartButtonContext);
   return (
     <section
-      className={`fixed z-50 top-0  w-[450px] h-full bg-white shadow-md overflow-y-auto ${
+      className={`fixed z-50 top-0  w-full md:w-96 h-full bg-white shadow-md overflow-y-auto ${
         isCartOpen ? "right-0" : "-right-[200%]"
       } p-10 transition-all duration-300`}
     >
@@ -49,11 +49,11 @@ export default function Cart() {
       ) : items.length === 0 ? (
         <div className="flex items-center justify-center h-full">
           <div className="flex flex-col gap-4">
-            <h3 className="font-bold text-secondary text-3xl">
+            <h3 className="font-bold text-secondary text-3xl text-center capitalize">
               your cart is empty
             </h3>
             <div className="flex items-center justify-center">
-              <SecondryBtn title={"continue shopping"} />
+              <SecondryBtn title={"Continue Shopping"} />
             </div>
           </div>
         </div>
@@ -71,30 +71,33 @@ export default function Cart() {
               return (
                 <li
                   key={item?.id}
-                  className="flex items-center justify-between mb-14"
+                  className="flex items-center justify-between flex-col md:flex-row gap-4 md:gap-0 mb-14"
                 >
-                  <div className="w-[100px] h-[100px]">
-                    <img src={item?.image} alt="product-img" />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <h3 className="text-lg font-semibold">{item?.title}</h3>
-                    <div className="flex items-center gap-1">
-                      <span className="text-gray-500">{item?.quantity}X</span>
-                      <span className="text-secondary">${item?.price}</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-[100px] h-[100px]">
+                      <img src={item?.image} alt="product-img" />
                     </div>
-                    <p className="text-sm text-secondary">
-                      Weight:{" "}
-                      <span className="text-primary">{item?.weigth} gm</span>
-                    </p>
-                    <p className="text-sm text-secondary">
-                      Ingredient:{" "}
-                      <span className="text-primary">{item?.ingredient}</span>
-                    </p>
-                    <p className="text-sm text-secondary">
-                      Skin Type:{" "}
-                      <span className="text-primary">{item?.skinType}</span>
-                    </p>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-lg font-semibold">{item?.title}</h3>
+                      <div className="flex items-center gap-1">
+                        <span className="text-gray-500">{item?.quantity}X</span>
+                        <span className="text-secondary">${item?.price}</span>
+                      </div>
+                      <p className="text-sm text-secondary">
+                        Weight:{" "}
+                        <span className="text-primary">{item?.weigth} gm</span>
+                      </p>
+                      <p className="text-sm text-secondary">
+                        Ingredient:{" "}
+                        <span className="text-primary">{item?.ingredient}</span>
+                      </p>
+                      <p className="text-sm text-secondary">
+                        Skin Type:{" "}
+                        <span className="text-primary">{item?.skinType}</span>
+                      </p>
+                    </div>
                   </div>
+
                   <div
                     onClick={() =>
                       dispatch(

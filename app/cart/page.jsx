@@ -25,7 +25,7 @@ export default function page() {
             ) : items.length === 0 ? (
               <div className="flex items-center justify-center">
                 <div className="flex flex-col items-center gap-5">
-                  <p className="text-4xl">Your Cart is Empty</p>
+                  <p className="text-4xl text-center">Your Cart is Empty</p>
                   <SecondryBtn title={"continue shopping"} />
                 </div>
               </div>
