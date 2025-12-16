@@ -18,7 +18,7 @@ export default function Menu() {
     <div
       className={`fixed top-[80px] menu-header w-[280px] bg-primary-foreground ${
         isMenuOpen ? "left-0" : "-left-full"
-      } z-10 transition-all duration-300 pt-8`}
+      } z-30 transition-all duration-300 pt-8`}
     >
       <ul className="flex flex-col gap-5">
         {links.map((link) => {

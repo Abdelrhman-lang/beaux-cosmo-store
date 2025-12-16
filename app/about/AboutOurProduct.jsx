@@ -32,7 +32,7 @@ export default function AboutOurProduct() {
     },
   ];
   return (
-    <div className="mt-12 bg-primary-foreground py-20">
+    <div className="mt-12 bg-primary-foreground py-20 relative -z-10">
       <SectionHeader title={"our products"} subTitle={"cosmatics"} />
       <div className="max-w-5xl mx-auto">
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-20 px-5">

@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 export default function SectionHeader({ subTitle, title }) {
   const pathname = usePathname();
   return (
-    <div className="relative mb-20 z-10">
+    <div className="relative mb-20">
       <p
         className={`${
           pathname.includes("/about") ? "text-white" : "text-primary-foreground"
