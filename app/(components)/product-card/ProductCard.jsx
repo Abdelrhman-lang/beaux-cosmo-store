@@ -3,15 +3,6 @@ import MainBtn from "../main-btn/MainBtn";
 import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { ProductDialog } from "../product-dialog/ProductDialog";
 export default function ProductCard({ product }) {
-  // const handelAddToCart = () => {
-  //   dispatch(
-  //     addToCart({
-  //       userEmail: user?.primaryEmailAddress?.emailAddress,
-  //       product,
-  //       quantity: 1,
-  //     })
-  //   );
-  // };
   return (
     <div className="group">
       <div className="relative">
@@ -20,15 +11,23 @@ export default function ProductCard({ product }) {
             <li>
               <ProductDialog
                 title={
-                  <button className="w-[40px] h-[40px] outline-none bg-white flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-500">
+                  <button className="cursor-pointer w-[40px] h-[40px] outline-none bg-white flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-500">
                     <Eye className="w-5 h-5" />
                   </button>
                 }
+                product={product}
               />
             </li>
 
-            <li className="w-[40px] h-[40px] bg-white flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-500">
-              <ShoppingCart className="w-5 h-5" />
+            <li className=" w-[40px] h-[40px] bg-white flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-500">
+              <ProductDialog
+                title={
+                  <button className="cursor-pointer w-[40px] h-[40px] outline-none bg-white flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-500">
+                    <ShoppingCart className="w-5 h-5" />
+                  </button>
+                }
+                product={product}
+              />
             </li>
             <li className="w-[40px] h-[40px] bg-white flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-500">
               <Heart className="w-5 h-5" />

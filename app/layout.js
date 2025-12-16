@@ -8,6 +8,7 @@ import CartButtonProvider from "@/context/CartButtonContext";
 import Overlay from "./(components)/overlay/Overlay";
 import Cart from "./(components)/cart/Cart";
 import { ReduxProvider } from "@/rtk/store";
+import MenuButtonProvider from "@/context/MenuButtonContext";
 
 const mrDeHaviland = Mr_De_Haviland({
   variable: "--font-cursive",
@@ -33,12 +34,14 @@ export default function RootLayout({ children }) {
         >
           <ReduxProvider>
             <CartButtonProvider>
-              <Cart />
-              <Overlay />
-              <Header />
-              <FixedArrow />
-              {children}
-              <Footer />
+              <MenuButtonProvider>
+                <Cart />
+                <Overlay />
+                <Header />
+                <FixedArrow />
+                {children}
+                <Footer />
+              </MenuButtonProvider>
             </CartButtonProvider>
           </ReduxProvider>
         </body>

@@ -4,6 +4,7 @@ import Logo from "./Logo";
 import Navbar from "./Navbar";
 import HeaderActions from "./HeaderActions";
 import { useEffect, useState } from "react";
+import Menu from "../menu/Menu";
 
 export default function Header() {
   const pathname = usePathname();
@@ -24,7 +25,7 @@ export default function Header() {
   }, []);
   return (
     <header
-      className={`fixed top-0 left-0 z-10 w-full h-auto flex items-center justify-between py-2 px-6 md:px-10 lg:px-20 ${
+      className={`fixed top-0 left-0 z-10 w-full h-auto flex items-center justify-between py-3 px-6 md:px-10 lg:px-20 ${
         bg
           ? "bg-primary-foreground transition-all duration-300"
           : "bg-transparent"
@@ -35,6 +36,7 @@ export default function Header() {
       }`}
     >
       <Logo />
+      <Menu />
       <Navbar />
       <HeaderActions />
     </header>

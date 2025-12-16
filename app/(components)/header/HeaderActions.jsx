@@ -10,7 +10,9 @@ export default function HeaderActions() {
   const { items } = useSelector((state) => state.cart);
   return (
     <div className="flex items-center gap-3 md:gap-5 lg:gap-8">
-      <UserButton />
+      <div className="md:flex items-center justify-center hidden">
+        <UserButton />
+      </div>
       <div
         onClick={() => setIsCartOpen(true)}
         className="hover:text-primary transition-colors duration-300 cursor-pointer relative"

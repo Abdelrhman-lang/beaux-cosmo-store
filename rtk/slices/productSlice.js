@@ -12,17 +12,35 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
+export const fetchSingleProduct = createAsyncThunk(
+  "/products/fetchSingleProduct",
+  async (productId, thunkApi) => {
+    try {
+      const res = await axios.get(
+        `/api/get-single-product?productId=${productId}`
+      );
+      return res.data;
+    } catch (err) {
+      return thunkApi.rejectWithValue(
+        err.response?.data || "Faild To Fetch Product"
+      );
+    }
+  }
+);
+
 // Slice
 const productSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
+    singleProduct: null,
     loading: false,
     error: null,
   },
   reducers: {},
   extraReducers: (bulider) => {
     bulider
+      // All Product
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
       })
@@ -33,6 +51,18 @@ const productSlice = createSlice({
       .addCase(fetchProducts.rejected, (state) => {
         state.loading = false;
         state.error = "Faild to Fetch Products";
+      })
+      // Single Product
+      .addCase(fetchSingleProduct.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchSingleProduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.singleProduct = action.payload;
+      })
+      .addCase(fetchSingleProduct.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });

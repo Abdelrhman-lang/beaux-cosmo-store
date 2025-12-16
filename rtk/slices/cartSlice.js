@@ -110,7 +110,7 @@ export const deleteFromCart = createAsyncThunk(
 
 const calcTotalPrice = (items) => {
   return items.reduce(
-    (acc, item) => acc + Number(item.price) * Number(item.quantity),
+    (acc, item) => acc + Number(item.newPrice) * Number(item.quantity),
     0
   );
 };
