@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
 import SecondryBtn from "../sec-btn/SecondryBtn";
-import { usePathname } from "next/navigation";
 
 export default function ProductDetails({ product, className }) {
   const [weigth, setWeigth] = useState(null);
@@ -30,7 +29,7 @@ export default function ProductDetails({ product, className }) {
     await dispatch(
       addToCart({
         userEmail: user?.primaryEmailAddress?.emailAddress,
-        product: singleProduct,
+        product,
         quantity,
         weigth,
         ingredient,
