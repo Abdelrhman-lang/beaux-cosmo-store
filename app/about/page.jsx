@@ -1,11 +1,13 @@
 import BreadCramp from "../(components)/bread-cramp/BreadCramp";
+import AboutFaceCare from "./AboutFaceCare";
 
 import AboutHero from "./AboutHero";
 import AboutOurProduct from "./AboutOurProduct";
+import Beauty from "./Beauty";
 
 export default function page() {
   return (
-    <section className="py-20">
+    <section className="py-20 ">
       <BreadCramp />
 
       <div className="flex flex-col items-center justify-center gap-2 mt-20">
@@ -20,6 +22,8 @@ export default function page() {
         <AboutHero />
       </div>
       <AboutOurProduct />
+      <AboutFaceCare />
+      <Beauty />
     </section>
   );
 }

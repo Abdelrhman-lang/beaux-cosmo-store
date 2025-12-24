@@ -220,3 +220,7 @@
 .menu-header {
   height: calc(100% - 80px);
 }
+.custom-container {
+  max-width: 1024px;
+  margin-inline: auto;
+}

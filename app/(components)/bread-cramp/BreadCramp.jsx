@@ -53,8 +53,8 @@ export default function BreadCramp({ product }) {
                 "Products"
               ) : pathname.includes("about") ? (
                 "About"
-              ) : pathname.includes("privacy-policy") ? (
-                "Privacy Policy"
+              ) : pathname.includes("contact") ? (
+                "Contact"
               ) : pathname.includes("product-details") ? (
                 <span>{product?.title}</span>
               ) : null}

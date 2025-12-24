@@ -1,9 +1,18 @@
 import React from "react";
+import BreadCramp from "../(components)/bread-cramp/BreadCramp";
+import ContactGrid from "./ContactGrid";
+import SectionHeader from "../(components)/sec-head/SectionHeader";
+import ContactForm from "./ContactForm";
 
 export default function page() {
   return (
-    <div className="flex items-center justify-center h-screen">
-      <h1 className="text-5xl">Comming Sooooon</h1>
-    </div>
+    <section className="py-24 px-5 lg:px-0">
+      <BreadCramp />
+      <div className="custom-container mt-24 pt-20">
+        <SectionHeader title={"Contatc Us"} subTitle={"Get In Touch"} />
+        <ContactGrid />
+        <ContactForm />
+      </div>
+    </section>
   );
 }

@@ -9,6 +9,7 @@ import Overlay from "./(components)/overlay/Overlay";
 import Cart from "./(components)/cart/Cart";
 import { ReduxProvider } from "@/rtk/store";
 import MenuButtonProvider from "@/context/MenuButtonContext";
+import { Toaster } from "sonner";
 
 const mrDeHaviland = Mr_De_Haviland({
   variable: "--font-cursive",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }) {
                 <Overlay />
                 <Header />
                 <FixedArrow />
+                <Toaster />
                 {children}
                 <Footer />
               </MenuButtonProvider>
