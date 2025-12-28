@@ -15,6 +15,7 @@ import { addToCart } from "@/rtk/slices/cartSlice";
 import { useUser } from "@clerk/nextjs";
 import Swal from "sweetalert2";
 import ProductDetails from "../product-details/ProductDetails";
+import { DialogDescription } from "@radix-ui/react-dialog";
 
 export function ProductDialog({ title, product }) {
   const [weigth, setWeigth] = useState(null);
@@ -54,11 +55,11 @@ export function ProductDialog({ title, product }) {
           <DialogTitle className={"text-sm text-center capitalize"}>
             product #{product?.id} details
           </DialogTitle>
-          {/* <DialogDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </DialogDescription> */}
+          <DialogDescription className="text-sm text-center text-gray-400">
+            Here You Can Order Product That Fites you.
+          </DialogDescription>
         </DialogHeader>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-5 lg:gap-x-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-5 gap-x-5 lg:gap-x-4 mt-8">
           <div className="max-w-[470px]">
             <img
               src={product?.image}

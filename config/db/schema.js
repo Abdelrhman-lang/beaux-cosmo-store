@@ -26,6 +26,8 @@ export const productsTable = pgTable("products", {
   weigth: text("product_weight").array(),
   ingredient: text("product_ingredient").array(),
   skinType: text("product_skin_type").array(),
+  productType: text("product_type"),
+  brand: text("brand"),
 });
 export const cartTable = pgTable("cart", {
   id: serial("id").primaryKey(),

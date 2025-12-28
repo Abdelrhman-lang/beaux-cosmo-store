@@ -7,11 +7,18 @@ import axios from "axios";
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async () => {
-    const res = await axios.get("/api/get-products");
+    const res = await axios.get(`/api/get-products`);
     return res.data;
   }
 );
 
+export const fetchProductsCategory = createAsyncThunk(
+  "/products/fetchProductsCategory",
+  async (filters = "") => {
+    const res = await axios.get(`/api/get-products-category${filters}`);
+    return res.data;
+  }
+);
 export const fetchSingleProduct = createAsyncThunk(
   "/products/fetchSingleProduct",
   async (productId, thunkApi) => {
@@ -33,7 +40,10 @@ const productSlice = createSlice({
   name: "products",
   initialState: {
     items: [],
+    allProducts: [],
     singleProduct: null,
+    totalPages: 0,
+    totalCount: 0,
     loading: false,
     error: null,
   },
@@ -46,9 +56,23 @@ const productSlice = createSlice({
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
+        state.allProducts = action.payload;
       })
       .addCase(fetchProducts.rejected, (state) => {
+        state.loading = false;
+        state.error = "Faild to Fetch Products";
+      })
+      // category
+      .addCase(fetchProductsCategory.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchProductsCategory.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items = action.payload.products;
+        state.totalPages = action.payload.meta.totalPages;
+        state.totalCount = action.payload.meta.totalCount;
+      })
+      .addCase(fetchProductsCategory.rejected, (state) => {
         state.loading = false;
         state.error = "Faild to Fetch Products";
       })

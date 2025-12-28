@@ -40,7 +40,8 @@ export default function ProductDetails({ product, className }) {
 
   return (
     <div className={className}>
-      <h3 className="text-3xl text-secondary">{product?.title}</h3>
+      <span className="text-gray-500">{product?.brand}</span>
+      <h3 className="text-3xl mt-3 text-secondary">{product?.title}</h3>
       <div className="font-semibold flex items-end gap-5">
         <span className="text-2xl">${product?.newPrice}</span>
         {product?.oldPrice ? (
@@ -111,6 +112,10 @@ export default function ProductDetails({ product, className }) {
             );
           })}
         </ul>
+      </div>
+      <div className="flex  gap-4">
+        <p className="mb-2">Product Type: </p>
+        <p className="text-primary">{product?.productType}</p>
       </div>
       <div>
         <p className="mb-2">Quantity:</p>

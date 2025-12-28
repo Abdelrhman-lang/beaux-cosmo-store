@@ -34,7 +34,7 @@ export default function Menu() {
         })}
       </ul>
       <div className="absolute bottom-10 left-0 px-8 flex items-center justify-center gap-2">
-        <UserButton />
+        <span>{user ? <UserButton /> : ""}</span>
         <span>{user?.firstName}</span>
       </div>
     </div>

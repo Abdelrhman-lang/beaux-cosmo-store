@@ -18,6 +18,8 @@ export default function BreadCramp({ product }) {
             ? "product"
             : pathname.includes("about")
             ? "about"
+            : pathname.includes("shop")
+            ? "collection"
             : ""}
         </h3>
         <ol className="flex items-center justify-center md:justify-start gap-1 text-sm md:text-lg  text-gray-700">
