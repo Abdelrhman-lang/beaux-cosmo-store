@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import BreadCramp from "../(components)/bread-cramp/BreadCramp";
 import ShopFilter from "./ShopFilter";
 import ProductsDisplay from "./ProductsDisplay";
@@ -11,7 +11,9 @@ export default function page() {
         <div className="flex flex-col md:flex-row items-start gap-8">
           <ShopFilter />
           <div className="flex-1">
-            <ProductsDisplay />
+            <Suspense fallback={<div>Loading Shop......</div>}>
+              <ProductsDisplay />
+            </Suspense>
           </div>
         </div>
       </div>
