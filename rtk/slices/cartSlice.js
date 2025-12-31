@@ -90,14 +90,12 @@ export const clearCart = createAsyncThunk(
 
 export const deleteFromCart = createAsyncThunk(
   "cart/deleteFromCart",
-  async ({ cartItemId, userEmail }, thunkApi) => {
+  async ({ cartItemId }, thunkApi) => {
     try {
       const res = await axios.delete(
         `/api/delete-item-from-cart?cartItemId=${cartItemId}`
       );
-      if (res.status === 200) {
-        return thunkApi.dispatch(getUserCartItems({ userEmail }));
-      }
+      return cartItemId;
     } catch (err) {
       return thunkApi.rejectWithValue(
         err.response?.data || "Faild to delete item from cart"
@@ -109,10 +107,12 @@ export const deleteFromCart = createAsyncThunk(
 // total price function
 
 const calcTotalPrice = (items) => {
-  return items.reduce(
-    (acc, item) => acc + Number(item.price) * Number(item.quantity),
-    0
-  );
+  if (!items) return 0;
+  return items.reduce((acc, item) => {
+    const price = item?.price ? Number(item.price) : 0;
+    const qty = item?.quantity ? Number(item.quantity) : 0;
+    return acc + price * qty;
+  }, 0);
 };
 // Slice
 export const cartSlice = createSlice({
@@ -130,10 +130,8 @@ export const cartSlice = createSlice({
       .addCase(addToCart.pending, (state) => {
         state.loading = true;
       })
-      .addCase(addToCart.fulfilled, (state, action) => {
+      .addCase(addToCart.fulfilled, (state) => {
         state.loading = false;
-        state.items.push(action.payload);
-        state.totalPrice = calcTotalPrice(state.items);
       })
       .addCase(addToCart.rejected, (state, action) => {
         state.loading = false;
@@ -152,11 +150,13 @@ export const cartSlice = createSlice({
         (state.loading = false), (state.error = action.payload);
       })
       // after delete
-      .addCase(deleteFromCart.fulfilled, (state) => {
+      .addCase(deleteFromCart.fulfilled, (state, action) => {
+        state.items = state.items.filter((item) => item.id !== action.payload);
         state.totalPrice = calcTotalPrice(state.items);
       })
       // after clear cart
       .addCase(clearCart.fulfilled, (state) => {
+        state.items = [];
         state.totalPrice = 0;
       });
   },

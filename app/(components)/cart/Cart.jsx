@@ -28,7 +28,7 @@ export default function Cart() {
         })
       );
     }
-  }, [user]);
+  }, [user, dispatch]);
   const { isCartOpen, setIsCartOpen } = useContext(CartButtonContext);
   return (
     <section
